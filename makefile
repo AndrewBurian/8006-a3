@@ -6,7 +6,7 @@ LIBS=
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=banhammer.exe
 
-SOURCES=main.cpp
+SOURCES=main.cpp action.cpp
 
 all: $(SOURCES) $(EXECUTABLE)
 
