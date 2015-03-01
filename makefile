@@ -4,7 +4,7 @@ CFLAGS=-c -g -Wall
 LDFLAGS=
 LIBS=
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=c10k.exe
+EXECUTABLE=banhammer.exe
 
 SOURCES=main.cpp
 
