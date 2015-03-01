@@ -7,3 +7,7 @@ Action::Action(std::string &name){
 void Action::act(std::string &hostname){
   // execute instructions
 }
+
+std::string Action::get_name(){
+  return _name;
+}
