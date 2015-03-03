@@ -1,0 +1,8 @@
+# The filter file for /var/log/secure
+
+
+
+
+#Feb 27 14:15:11 DataComm sshd[8088]: Failed password for root from 192.168.0.7 port 60835 ssh2
+.*\: Failed password for [[:alnum:]]+ from ([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+) port ([[:digit:]]+) .*
+hostname,port
