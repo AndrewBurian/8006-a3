@@ -1,6 +1,6 @@
 # generic makefile
 CC=g++
-CFLAGS=-c -g -Wall
+CFLAGS=-c -g -Wall -std=c++11
 LDFLAGS=
 LIBS=
 OBJECTS=$(SOURCES:.cpp=.o)
@@ -13,7 +13,7 @@ all: $(SOURCES) $(EXECUTABLE)
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@ $(LIBS)
 
-.c.o:
+.cpp.o:
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:

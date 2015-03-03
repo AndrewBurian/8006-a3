@@ -26,3 +26,7 @@
 *.exe
 *.out
 *.app
+
+# Filter files
+filter_main.cpp
+secure
