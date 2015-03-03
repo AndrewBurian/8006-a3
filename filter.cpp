@@ -30,6 +30,8 @@ Revisions:
 
 #include "filter.h"
 
+#include "action.h"
+
 #include <fstream>
 #include <iostream>
 #include <limits.h>
@@ -369,7 +371,7 @@ void Filter::check_log_line(std::string line) {
 		
 		//notify all actions
 		for(auto action_it = actions.begin(); action_it != actions.end(); ++action_it) {
-			
+			(*action_it)->act(keywords);
 		}
 		
 	}
