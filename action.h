@@ -1,3 +1,22 @@
+/* ----------------------------------------------------------------------------
+HEADER FILE
+
+Name:		action.h
+
+Program:	BanHammer
+
+Developer:	Andrew Burian
+
+Created On:	2015-03-04
+
+Description:
+	Class definition for the Action object and the nessesary includes
+
+Revisions:
+	(none)
+
+---------------------------------------------------------------------------- */
+
 #ifndef ACTION_H
 #define ACTION_H
 

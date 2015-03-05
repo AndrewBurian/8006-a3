@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
 SOURCE FILE
 
-Name:		filter.c
+Name:		filter.cpp
 
 Program:	banhammer
 

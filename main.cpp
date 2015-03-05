@@ -1,3 +1,26 @@
+/* ----------------------------------------------------------------------------
+SOURCE FILE
+
+Name:		main.cpp
+
+Program:	BanHammer
+
+Developer:	Andrew Burian
+
+Created On:	2015-03-04
+
+Functions:
+	int main(int argc, char** argv)
+
+Description:
+	Starting point of the BanHammer program.
+  Reads conf and starts up
+
+Revisions:
+	(none)
+
+---------------------------------------------------------------------------- */
+
 #include <stdlib.h>
 #include <vector>
 #include <sstream>
@@ -5,6 +28,34 @@
 #include "filter.h"
 #include "action.h"
 
+
+/* ----------------------------------------------------------------------------
+FUNCTION
+
+Name:		Main
+
+Prototype:	int main(int argc, char** argv)
+
+Developer:	Andrew Burian
+
+Created On:	2015-03-04
+
+Parameters:
+	command ling args (ignored)
+
+Return Values:
+	0
+
+Description:
+	Entry point for BanHammer.
+  Reads the banhammer.conf file, creates filter and action objects as nessesary
+  and links them together. Then gives each filter object a thread and awaits
+  their completion.
+
+Revisions:
+	(none)
+
+---------------------------------------------------------------------------- */
 int main(int argc, char** argv){
 
   // read in main config file

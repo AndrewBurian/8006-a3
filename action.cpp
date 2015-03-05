@@ -1,5 +1,60 @@
+/* ----------------------------------------------------------------------------
+SOURCE FILE
+
+Name:		action.cpp
+
+Program:	BanHammer
+
+Developer:	Andrew Burian
+
+Created On:	2015-03-04
+
+Functions:
+	Action::Action(std::string &name, int banTime)
+  void Action::act(std::map<std::string, std::string> &replacements)
+  void Action::unact(std::map<std::string, std::string> replacements)
+
+Description:
+	The implementation of the Action class
+
+Revisions:
+	(none)
+
+---------------------------------------------------------------------------- */
+
 #include "action.h"
 
+/* ----------------------------------------------------------------------------
+FUNCTION
+
+Name:		Action
+
+Prototype:	Action::Action(std::string &name, int banTime)
+
+Developer:	Andrew Burian
+
+Created On:	2015-03-04
+
+Parameters:
+	std::string &name
+    the name of this filter, corresponds to its .act file
+  int banTime
+    the delay between act and unact actions
+
+Return Values:
+	Action
+    New action object
+  Throws:
+    Exception on failure to find .act file
+
+Description:
+	Creates an action object, executes any [before] directives, and loads the
+  [act] and [unact] directives for later
+
+Revisions:
+	(none)
+
+---------------------------------------------------------------------------- */
 Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) {
 
   // open the file containing the actions
@@ -65,6 +120,28 @@ Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) 
 
 }
 
+/* ----------------------------------------------------------------------------
+FUNCTION
+
+Name:		Act
+
+Prototype:	void Action::act(std::map<std::string, std::string> &replacements)
+
+Developer:	Andrew Burian
+
+Created On:	2015-03-04
+
+Parameters:
+	std::map<std::string, std::string> &replacements
+    key-value pairs that are to be replaced in the act directives
+
+Description:
+	Executes all act directives after performing key-value replacements
+
+Revisions:
+	(none)
+
+---------------------------------------------------------------------------- */
 void Action::act(std::map<std::string, std::string> &replacements){
 
   // for each action to take
@@ -92,6 +169,29 @@ void Action::act(std::map<std::string, std::string> &replacements){
   }
 }
 
+/* ----------------------------------------------------------------------------
+FUNCTION
+
+Name:		UnAct
+
+Prototype:	void Action::unact(std::map<std::string, std::string> replacements)
+
+Developer:	Andrew Burian
+
+Created On:	2015-03-04
+
+Parameters:
+	std::map<std::string, std::string> &replacements
+    key-value pairs that are to be replaced in the act directives
+
+Description:
+	Delays for the action's given time, then executes all unact directives
+  performing the same key-value replacements as the original act
+
+Revisions:
+	(none)
+
+---------------------------------------------------------------------------- */
 void Action::unact(std::map<std::string, std::string> replacements){
 
   sleep(_banTime);
