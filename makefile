@@ -1,7 +1,7 @@
 # generic makefile
 CC=g++
 CFLAGS=-c -g -Wall -std=c++11
-LDFLAGS=-pthread
+LDFLAGS=
 LIBS=
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=banhammer.exe
