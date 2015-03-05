@@ -15,10 +15,11 @@ class Action{
 
 private:
   std::string _name;
+  int _banTime;
   std::list<std::string> _actions;
 
 public:
-  Action(std::string &name);
+  Action(std::string &name, int banTime);
   void act(std::map<std::string, std::string> &replacements);
   std::string get_name();
 };

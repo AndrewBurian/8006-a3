@@ -1,6 +1,6 @@
 #include "action.h"
 
-Action::Action(std::string &name) : _name(name) {
+Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) {
 
   // open the file containing the actions
   std::fstream actionsFile(PATH + _name + TYPE, std::ios_base::in);
