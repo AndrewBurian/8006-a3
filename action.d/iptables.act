@@ -1,1 +1,5 @@
+[act]
 echo 'Blocking <hostname> yay!'
+
+[unact]
+echo 'unblocking <hostname>, I guess he can come back now'
