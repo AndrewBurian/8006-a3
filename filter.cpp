@@ -399,7 +399,7 @@ void Filter::check_log_line(std::string line) {
 
 			//because there is only 1 group, the index is 1.
 			//index 0 is the whole string
-
+			std::cout << "Match" << std::endl;
 			//get the datetime from regex
 			std::string datetime = line.substr(matches[1].rm_so, matches[1].rm_eo - matches[1].rm_so);
 
