@@ -30,3 +30,6 @@
 # Filter files
 filter_main.cpp
 secure
+
+# Core files
+core.*
