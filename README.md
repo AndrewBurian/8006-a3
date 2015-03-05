@@ -24,7 +24,14 @@ and `banhammer.conf` sets up the associations between the two
 
 Filters
 -----------------
-Call Jordan... I have no clue. Regex or some such dark magic
+Filters contain regular expressions that match lines in a log file. Each of these lines will be counted as an attempt.
+
+Directive | Description
+----------|------------
+`[params]` | Parameters that are global to each filter line. Currently only datetime_regex and datetime_format are used.
+`[regex]` | Contains the regex that matches the log file lines. The line after this is a list of names for the groups in the regex.
+
+All sections are necessary but can be in any order
 
 Actions
 -----------------
