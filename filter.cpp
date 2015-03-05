@@ -439,6 +439,8 @@ void Filter::check_log_line(std::string line) {
 
 		}
 
+		std::cout << "Matching log line detected! " << line << std::endl;
+
 		//set event
 		if (epoch != 0 && keywords.find("hostname") != keywords.end()) {
 
@@ -451,7 +453,7 @@ void Filter::check_log_line(std::string line) {
 			for(i = hostname_attempts.size(); i >= 0; --i) {
 
 				//check if the time is older than the period we are checking
-				if (hostname_attempts[i] - epoch > period) {
+				if (epoch - hostname_attempts[i] > period) {
 					hostname_attempts.erase(hostname_attempts.begin() + i);
 				}
 

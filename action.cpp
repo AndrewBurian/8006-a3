@@ -3,11 +3,11 @@
 Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) {
 
   // open the file containing the actions
-  std::fstream actionsFile(PATH + _name + TYPE, std::ios_base::in);
+  std::fstream actionsFile(ACTION_PATH + _name + ACTION_TYPE, std::ios_base::in);
 
   // check to see if the file failed to open, and throw an exception
   if(!actionsFile){
-    std::cerr << "Failed to open actions file " << PATH << _name << TYPE << std::endl;
+    std::cerr << "Failed to open actions file " << ACTION_PATH << _name << ACTION_TYPE << std::endl;
     // fatal
     throw "Could not create Action";
   }
@@ -25,6 +25,8 @@ Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) 
 
 void Action::act(std::map<std::string, std::string> &replacements){
 
+  std::cout << "Taking action " << _name << std::endl;
+
   // for each action to take
   for(std::string act : _actions){
     // range based for loop gets copies
@@ -34,7 +36,7 @@ void Action::act(std::map<std::string, std::string> &replacements){
       it != replacements.end(); ++it){
 
       // find the position of the target string, replace it with the replacement
-      act.replace(act.find(it->first), it->first.length(), it->second);
+      act.replace(act.find("<" + it->first + ">"), it->first.length(), it->second);
 
     }
 
