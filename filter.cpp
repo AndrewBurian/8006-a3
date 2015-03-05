@@ -450,7 +450,7 @@ void Filter::check_log_line(std::string line) {
 			hostname_attempts.push_back(epoch);
 
 			//sanitize the vector by removing old log lines
-			for(i = hostname_attempts.size(); i >= 0; --i) {
+			for(i = hostname_attempts.size() - 1; i >= 0; --i) {
 
 				//check if the time is older than the period we are checking
 				if (epoch - hostname_attempts[i] > period) {
