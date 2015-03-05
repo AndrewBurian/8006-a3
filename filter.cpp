@@ -311,7 +311,7 @@ void Filter::load_filter() {
 			if (key == "datetime_regex") {
 				datetime_expression = (regex_t*)malloc(sizeof(regex_t));
 				if (regcomp(datetime_expression, value.c_str(), REG_EXTENDED) != 0) {
-					std::cout << "Error in datetime_regex: " << value << std::endl;
+					std::cerr << "Error in datetime_regex: " << value << std::endl;
 				}
 			}
 		}
@@ -319,7 +319,7 @@ void Filter::load_filter() {
 
 			//compile into temporary regex struct
 			if (regcomp(&tmp_regex, line.c_str(), REG_EXTENDED) != 0) {
-				std::cout << "Error in regex: " << line << std::endl;
+				std::cerr << "Error in regex: " << line << std::endl;
 			}
 			else {
 
@@ -399,7 +399,6 @@ void Filter::check_log_line(std::string line) {
 
 			//because there is only 1 group, the index is 1.
 			//index 0 is the whole string
-			std::cout << "Match" << std::endl;
 			//get the datetime from regex
 			std::string datetime = line.substr(matches[1].rm_so, matches[1].rm_eo - matches[1].rm_so);
 
@@ -438,8 +437,6 @@ void Filter::check_log_line(std::string line) {
 			keywords[data->keywords[i - 1]] = line.substr(matches[i].rm_so, matches[i].rm_eo - matches[i].rm_so);
 
 		}
-
-		std::cout << "Matching log line detected! " << line << std::endl;
 
 		//set event
 		if (epoch != 0 && keywords.find("hostname") != keywords.end()) {

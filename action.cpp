@@ -25,8 +25,6 @@ Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) 
 
 void Action::act(std::map<std::string, std::string> &replacements){
 
-  std::cout << "Taking action " << _name << std::endl;
-
   // for each action to take
   for(std::string act : _actions){
     // range based for loop gets copies
@@ -36,7 +34,10 @@ void Action::act(std::map<std::string, std::string> &replacements){
       it != replacements.end(); ++it){
 
       // find the position of the target string, replace it with the replacement
-      act.replace(act.find("<" + it->first + ">"), it->first.length(), it->second);
+      size_t pos = act.find("<" + it->first + ">");
+      if(pos != std::string::npos){
+        act.replace(pos, it->first.length() + 2, it->second);
+      }
 
     }
 
