@@ -1,5 +1,10 @@
+[before]
+/sbin/iptables -N ssh-ban
+
 [act]
-echo 'Blocking <hostname> yay!'
+echo 'Blocking <hostname>. He's been bad'
+/sbin/iptables -A ssh-ban -s <hostname> --dport 22 -j DROP
 
 [unact]
 echo 'unblocking <hostname>, I guess he can come back now'
+/sbin/iptables -D ssh-ban -s <hostname> --dport 22 -j DROP

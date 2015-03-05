@@ -15,15 +15,30 @@ Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) 
   // read in the actions and add them
   std::string action;
 
-  // find the acts header
+  // find the before header
   while(std::getline(actionsFile, action)){
-    if(action == "[act]"){
+    if(action == "[before]"){
       break;
     }
   }
 
-  // read acts
+  // read befores
   while(std::getline(actionsFile, action)){
+    // skip comments and blanks
+    if(action.front() == '#' || action.front() == '\n'){
+      continue;
+    }
+    // if we're into acts
+    if(action == "[act]"){
+      break;
+    }
+    // execute befores right away
+    system(action.c_str());
+  }
+
+
+  // alread read act
+  do{
     // skip comments and blanks
     if(action.front() == '#' || action.front() == '\n'){
       continue;
@@ -33,7 +48,8 @@ Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) 
       break;
     }
     _actions.push_back(action);
-  }
+  }while(std::getline(actionsFile, action));
+
 
   // alread read unact
   do{
