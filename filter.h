@@ -45,7 +45,7 @@ private:
 	std::vector<Action*> actions;
 	std::vector<struct filter_data> filters;
 	std::map<std::string, std::string> filter_parameters;
-	std::map<std::string, std::vector<long>> attempts_by_hostname;
+	std::map<std::string, std::vector<time_t>> attempts_by_hostname;
 	regex_t *datetime_expression;
 
 	int period;
