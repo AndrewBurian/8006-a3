@@ -98,6 +98,10 @@ Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) 
     if(action.front() == '#' || action.front() == '\n'){
       continue;
     }
+    // skip act header
+    if(action == "[act]"){
+      continue;
+    }
     // if we're into unacts
     if(action == "[unact]"){
       break;
@@ -110,6 +114,10 @@ Action::Action(std::string &name, int banTime) : _name(name), _banTime(banTime) 
   do{
     // skip comments and blanks
     if(action.front() == '#' || action.front() == '\n'){
+      continue;
+    }
+    // skip unact header
+    if(action == "[unact]"){
       continue;
     }
     _unacts.push_back(action);
@@ -163,9 +171,10 @@ void Action::act(std::map<std::string, std::string> &replacements){
     // all replacements made, envoke action
     system(act.c_str());
 
+  }
+  if (_banTime >= 0) {
     // start the unacts
     _threads.push_back(new std::thread(&Action::unact, this, replacements));
-
   }
 }
 

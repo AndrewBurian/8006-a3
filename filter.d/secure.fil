@@ -12,7 +12,7 @@
 [params]
 
 # datetime_regex should only have 1 regex group
-datetime_regex=([^[:space:]]+[ ][^[:space:]]+[ ]+[[:digit:]]+[ ][[:digit:]]+:[[:digit:]]+:[[:digit:]]+).*
+datetime_regex=([^[:space:]]+[ ]+[[:digit:]]+[ ]+[[:digit:]]+:[[:digit:]]+:[[:digit:]]+).*
 datetime_format=%b %d %H:%M:%S
 
 

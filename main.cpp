@@ -243,6 +243,9 @@ int main(int argc, char** argv){
 
       // empty the actions vector
       actionNames.erase(actionNames.begin(), actionNames.end());
+
+      // set new rule name
+      ruleName = line.substr(1, line.size() - 2);
     }
 
     // end of conf file reading
