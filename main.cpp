@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <sstream>
+#include <thread>
 #include "filter.h"
 #include "action.h"
 
@@ -11,6 +12,7 @@ int main(int argc, char** argv){
 
   std::vector<Filter*> filters;
   std::vector<Action*> actions;
+  std::vector<std::thread*> threads;
 
   Filter* newFilter = 0;
   Action* newAction = 0;
@@ -116,7 +118,7 @@ int main(int argc, char** argv){
       // otherwise, the previous rule declaration is done.
       // build the current rule
 
-      // check to see all required params are set
+      // check to see all(); required params are set
       if(!(filterNameReady && logFileReady && actionNamesReady
         && periodReady && attemptsReady && banTimeReady)){
 
@@ -178,7 +180,8 @@ int main(int argc, char** argv){
 
       // if it needs a thread, provide one
       if(isNew){
-        //newFilter->run();
+        std::thread* thread = new std::thread(&Filter::run, newFilter);
+        threads.push_back(thread);
       }
 
       // filter created and actions added
@@ -196,6 +199,9 @@ int main(int argc, char** argv){
   }
 
   // wait on threads
+  for(std::thread* thr : threads){
+    thr->join();
+  }
 
   return 0;
 }
