@@ -8,8 +8,8 @@
 #include <string>
 #include <map>
 
-#define PATH "./action.d/"
-#define TYPE ".act"
+#define ACTION_PATH "./action.d/"
+#define ACTION_TYPE ".act"
 
 class Action{
 
